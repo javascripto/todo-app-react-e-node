@@ -1,15 +1,35 @@
 import React from 'react';
 
-export default props => (
-  <div role="form" className="todoForm">
-    <div className="col-xs-12 col-sm-9 col-md-10">
-      <input type="text" id="description" className="form-control"
-        placeholder="Adicione uma tarefa" />
+import Grid from '../template/grid';
+import IconButton from '../template/iconButton';
+
+export default ({ handleAdd, handleChange, handleSearch, description }) => {
+  const checkEnter = e => (e.key === 'Enter') && handleAdd();
+  return (
+    <div role="form" className="todoForm">
+      <Grid cols="12 9 10">
+        <input
+          type="text"
+          id="description"
+          value={description}
+          onKeyDown={checkEnter}
+          onChange={handleChange}
+          className="form-control"
+          placeholder="Adicione uma tarefa"
+        />
+      </Grid>
+      <Grid cols="12 3 2">
+        <IconButton
+          icon="plus"
+          style="primary"
+          onClick={handleAdd}
+        />
+        <IconButton
+          style="info"
+          icon="search"
+          onClick={handleSearch}
+        />
+      </Grid>
     </div>
-    <div className="col-xs-12 col-sm-3 col-md-2">
-      <button className="btn btn-primary">
-        <i className="fa fa-plus"></i>
-      </button>
-    </div>
-  </div>
-);
+  );
+};
