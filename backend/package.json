@@ -7,7 +7,8 @@
   "license": "ISC",
   "scripts": {
     "dev": "nodemon",
-    "production": "pm2 start src/loader.js --name todo-app"
+    "production": "pm2 start src/loader.js --name todo-app",
+    "postinstall": "test -f .env && echo '' || cp .env.example .env"
   },
   "dependencies": {
     "body-parser": "^1.15.2",

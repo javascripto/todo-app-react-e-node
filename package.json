@@ -1,0 +1,17 @@
+{
+  "name": "todo-app-react-e-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:javascripto/todo-app-react-e-node.git",
+  "author": "Yuri Alves <yurialves2@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "install": "cd backend && npm install && cd ../frontend && npm install && cd ..",
+    "start-frontend": "cd frontend && npm run dev && cd ..",
+    "start-backend": "cd backend && npm run dev && cd ..",
+    "start": "concurrently 'npm run start-frontend' 'npm run start-backend'"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.0"
+  }
+}
