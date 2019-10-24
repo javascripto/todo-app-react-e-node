@@ -18,6 +18,7 @@ export default class Todo extends Component {
 
     this.refresh = this.refresh.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleClear = this.handleClear.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
@@ -54,6 +55,10 @@ export default class Todo extends Component {
       .then(() => this.refreshthis.state.description());
   }
 
+  handleClear() {
+    this.refresh();
+  }
+
   refresh(description = '') {
     const search = description ? { description__regex: `/${description}/`} : undefined;
 
@@ -76,6 +81,7 @@ export default class Todo extends Component {
         <PageHeader name="Tarefas" small="Cadastro"/>
         <TodoForm
           handleAdd={this.handleAdd}
+          handleClear={this.handleClear}
           handleSearch={this.handleSearch}
           handleChange={this.handleChange}
           description={this.state.description}

@@ -8,9 +8,24 @@ export default ({ list = [], handleRemove, handleMarkAsDone, handleMarkAsPending
     <tr key={key}>
       <td className={todo.done ? 'markedAsDone' : ''}>{todo.description}</td>
       <td>
-        <IconButton style="success" hide={todo.done}  icon="check" onClick={() => handleMarkAsDone(todo)} />
-        <IconButton style="warning" hide={!todo.done} icon="undo" onClick={() => handleMarkAsPending(todo)} />
-        <IconButton style="danger"  hide={!todo.done} icon="trash-o" onClick={() => handleRemove(todo)} />
+        <IconButton
+          icon="check"
+          style="success"
+          hide={todo.done}
+          onClick={() => handleMarkAsDone(todo)}
+        />
+        <IconButton
+          icon="undo"
+          style="warning"
+          hide={!todo.done}
+          onClick={() => handleMarkAsPending(todo)}
+        />
+        <IconButton
+          icon="trash-o"
+          style="danger"
+          hide={!todo.done}
+          onClick={() => handleRemove(todo)}
+        />
       </td>
     </tr>
   ));
@@ -20,7 +35,7 @@ export default ({ list = [], handleRemove, handleMarkAsDone, handleMarkAsPending
       <thead>
         <tr>
           <th>Descrição</th>
-          <th>Ações</th>
+          <th className="tableActions">Ações</th>
         </tr>
       </thead>
       <tbody>

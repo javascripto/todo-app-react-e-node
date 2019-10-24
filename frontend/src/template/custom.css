@@ -4,6 +4,14 @@
 }
 
 .markedAsDone {
-    text-decoration: line-through;    
+    text-decoration: line-through;
     color: #777;
+}
+
+.tableActions {
+    width: 120px;
+}
+
+.todoForm {
+    padding-bottom: 60px;
 }

@@ -3,8 +3,13 @@ import React from 'react';
 import Grid from '../template/grid';
 import IconButton from '../template/iconButton';
 
-export default ({ handleAdd, handleChange, handleSearch, description }) => {
-  const checkEnter = e => (e.key === 'Enter') && handleAdd();
+export default ({ handleAdd, handleChange, handleSearch, handleClear, description }) => {
+  const keyHandler = e => {
+    console.log(e.key);
+    if (e.key === 'Enter') return e.shiftKey ? handleSearch() : handleAdd();
+    if (e.key === 'Escape') return handleClear();
+  }
+
   return (
     <div role="form" className="todoForm">
       <Grid cols="12 9 10">
@@ -12,7 +17,7 @@ export default ({ handleAdd, handleChange, handleSearch, description }) => {
           type="text"
           id="description"
           value={description}
-          onKeyDown={checkEnter}
+          onKeyDown={keyHandler}
           onChange={handleChange}
           className="form-control"
           placeholder="Adicione uma tarefa"
@@ -28,6 +33,11 @@ export default ({ handleAdd, handleChange, handleSearch, description }) => {
           style="info"
           icon="search"
           onClick={handleSearch}
+        />
+        <IconButton
+          icon="close"
+          style="default"
+          onClick={handleClear}
         />
       </Grid>
     </div>
